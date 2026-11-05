@@ -1,6 +1,14 @@
 # NOA IMPULSA — tu sitio web
 
+**Está en línea aquí:** https://danielnoaarias-max.github.io/noa-impulsa-web/
+**Código en GitHub:** https://github.com/danielnoaarias-max/noa-impulsa-web
+
 Carpeta lista para subir a cualquier hosting. Son archivos sueltos: no hay nada que instalar.
+
+## Publicar los cambios que hagas
+
+Haz doble clic en `SUBIR-CAMBIOS.bat` (está en esta misma carpeta).
+Sube todo a GitHub y en un par de minutos se ve en el enlace de arriba.
 
 ## Qué hay dentro
 
