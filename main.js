@@ -226,6 +226,15 @@
       var form = document.getElementById('contactForm');
       if (!form) return;
 
+      /* si volvemos del envío clásico, mostramos el aviso de recibido */
+      if (/[?&]enviado=1/.test(window.location.search)) {
+        var okb = document.createElement('p');
+        okb.className = 'form__ok';
+        okb.setAttribute('role', 'status');
+        okb.textContent = '¡Listo! Recibimos tu mensaje. Te respondemos muy pronto.';
+        form.appendChild(okb);
+      }
+
       form.addEventListener('submit', function (e) {
         if (!form.checkValidity()) return;          // el navegador avisa
         if (!window.fetch || !window.FormData) return; // envío clásico de respaldo
@@ -235,15 +244,21 @@
         var txt = btn ? btn.innerHTML : '';
         if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
 
-        fetch(form.action, {
+        var ajaxUrl = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+        fetch(ajaxUrl, {
           method: 'POST',
           body: new FormData(form),
           headers: { Accept: 'application/json' }
         }).then(function (r) {
-          if (!r.ok) throw new Error('bad status');
+          return r.json().then(function (j) { return { ok: r.ok, j: j }; });
+        }).then(function (res) {
+          var good = res.ok && (res.j.success === true || res.j.success === 'true');
+          if (!good) throw new Error('rechazado');
           done(true);
         }).catch(function () {
-          done(false);
+          /* respaldo: envío clásico (recarga la página, pero llega igual) */
+          if (btn) { btn.disabled = false; btn.innerHTML = txt; }
+          form.submit();
         });
 
         function done(ok) {
