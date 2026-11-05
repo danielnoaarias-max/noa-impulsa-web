@@ -259,7 +259,7 @@
             box.textContent = '¡Listo! Recibimos tu mensaje. Te respondemos muy pronto.';
             form.reset();
           } else {
-            box.textContent = 'No pudimos enviarlo desde aquí. Escríbenos por WhatsApp al +54 693 172 1317 y lo vemos al tiro.';
+            box.textContent = 'No pudimos enviarlo desde aquí. Escríbenos por WhatsApp al +56 9 3172 1317 y lo vemos al tiro.';
           }
         }
       });

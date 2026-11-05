@@ -23,12 +23,12 @@ Sube todo a GitHub y en un par de minutos se ve en el enlace de arriba.
 ## Lo que debes saber
 
 ### 1. El WhatsApp
-Hoy todos los botones apuntan al número **+54 693 172 1317**.
-Si ese número no es exacto, búscalo en `index.html` (aparece como `546931721317`)
+Hoy todos los botones apuntan al número **+56 9 3172 1317**.
+Si ese número no es exacto, búscalo en `index.html` (aparece como `56931721317`)
 y reemplázalo — o dímelo y lo cambio yo en un segundo.
 
 ### 2. El formulario
-Los mensajes llegan a **danielnoaarias@gmail.com**.
+Los mensajes llegan a **contactonoaimpulsa@gmail.com**.
 
 **Hay que activarlo una sola vez:** la primera vez que alguien envíe el formulario,
 te llegará un correo pidiendo confirmar que esa dirección es tuya. Le das a confirmar
@@ -41,7 +41,7 @@ Dice **24/7 · 100% · 0 · 1**. No son resultados de clientes, son tu forma de 
 Si prefieres otras, están en `index.html` dentro del bloque `CIFRAS`.
 
 ### 4. Cuando cambies algo
-En `index.html` verás que los archivos llevan `?v=20261106` al final.
+En `index.html` verás que los archivos llevan `?v=20261107` al final.
 Cada vez que hagas cambios, cambia esa fecha por la del día (por ejemplo `?v=20261120`).
 Así los visitantes ven la versión nueva y no una guardada en su navegador.
 
