@@ -28,12 +28,10 @@ Si ese número no es exacto, búscalo en `index.html` (aparece como `56931721317
 y reemplázalo — o dímelo y lo cambio yo en un segundo.
 
 ### 2. El formulario
-Los mensajes llegan a **contactonoaimpulsa@gmail.com**.
-
-**Hay que activarlo una sola vez:** la primera vez que alguien envíe el formulario,
-te llegará un correo pidiendo confirmar que esa dirección es tuya. Le das a confirmar
-y desde ahí todos los mensajes llegan solos. Lo más cómodo es que **hagas tú ese primer
-envío de prueba** cuando la página ya esté publicada.
+Funciona con el formulario incluido de **Netlify** (solo en https://noaimpulsa.netlify.app).
+Los mensajes quedan guardados en Netlify, en **Forms**, y se pueden mandar a un correo:
+Netlify -> tu sitio -> **Forms** -> **Settings & notifications** -> **Add notification** -> **Email notification**
+-> pon contactonoaimpulsa@gmail.com y elige el formulario `contacto`.
 
 ### 3. La franja de cifras
 Dice **24/7 · 100% · 0 · 1**. No son resultados de clientes, son tu forma de trabajar
