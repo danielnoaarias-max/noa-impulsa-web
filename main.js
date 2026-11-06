@@ -542,6 +542,62 @@
       window.setTimeout(function () { if (!armed) { seen = true; arm(); } }, 4500);
     });
 
+    /* ---------- video promocional: se reproduce solo al verlo, sin sonido ---------- */
+    safe('promo', function () {
+      var v = document.getElementById('promo');
+      if (!v) return;
+      var phone = v.closest('.phone');
+      var sound = phone.querySelector('.vbtn');
+      var play = phone.querySelector('.vplay');
+      var prog = phone.querySelector('.vprog');
+      var bar = prog ? prog.firstElementChild : null;
+      var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+      var userPaused = false;
+
+      /* controles propios (sin JS quedan los del navegador) */
+      v.controls = false; v.removeAttribute('controls');
+      [sound, play, prog].forEach(function (el) { if (el) el.hidden = false; });
+
+      function ui() {
+        phone.classList.toggle('is-paused', v.paused);
+        phone.classList.toggle('is-sound', !v.muted);
+        sound.setAttribute('aria-pressed', v.muted ? 'false' : 'true');
+        sound.setAttribute('aria-label', v.muted ? 'Activar sonido' : 'Silenciar');
+      }
+      function tryPlay() {
+        var p = v.play();
+        if (p && p.catch) p.catch(function () { ui(); });
+      }
+
+      play.addEventListener('click', function () { userPaused = false; tryPlay(); });
+      v.addEventListener('click', function () {
+        if (v.paused) { userPaused = false; tryPlay(); }
+        else { userPaused = true; v.pause(); }
+      });
+      sound.addEventListener('click', function () {
+        v.muted = !v.muted;
+        if (!v.muted && v.paused) { userPaused = false; tryPlay(); }
+        ui();
+      });
+      v.addEventListener('play', ui);
+      v.addEventListener('pause', ui);
+      v.addEventListener('volumechange', ui);
+      v.addEventListener('timeupdate', function () {
+        if (bar && v.duration) bar.style.width = (v.currentTime / v.duration * 100) + '%';
+      });
+
+      if (!reduce && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { if (!userPaused) tryPlay(); }
+            else { v.pause(); }
+          });
+        }, { threshold: 0.5 });
+        io.observe(v);
+      }
+      ui();
+    });
+
     /* ---------- formulario: envío sin recargar + aviso ---------- */
     safe('form', function () {
       var form = document.getElementById('contactForm');
