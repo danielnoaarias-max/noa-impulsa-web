@@ -23,8 +23,8 @@ Sube todo a GitHub y en un par de minutos se ve en el enlace de arriba.
 ## Lo que debes saber
 
 ### 1. El WhatsApp
-Hoy todos los botones apuntan al número **+56 9 3172 1317**.
-Si ese número no es exacto, búscalo en `index.html` (aparece como `56931721317`)
+Hoy todos los botones apuntan al número **+56 9 9214 9576**.
+Si ese número no es exacto, búscalo en `index.html` (aparece como `56992149576`)
 y reemplázalo — o dímelo y lo cambio yo en un segundo.
 
 ### 2. El formulario
