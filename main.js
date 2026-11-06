@@ -594,7 +594,10 @@
       }
 
       items.forEach(function (b, k) {
-        b.addEventListener('click', function () { if (k !== cur || v.paused) select(k, true); });
+        b.addEventListener('click', function () {
+          if (window.umami && window.umami.track) window.umami.track('video-' + (k + 1));
+          if (k !== cur || v.paused) select(k, true);
+        });
       });
 
       play.addEventListener('click', function () { userPaused = false; tryPlay(); });
@@ -676,6 +679,7 @@
             form.appendChild(box);
           }
           if (ok) {
+            if (window.umami && window.umami.track) window.umami.track('formulario-enviado');
             box.textContent = '¡Listo! Recibimos tu mensaje. Te respondemos muy pronto.';
             form.reset();
           } else {
