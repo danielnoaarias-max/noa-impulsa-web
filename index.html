@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261108">
+<link rel="stylesheet" href="styles.css?v=20261109">
 </head>
 <body>
 
@@ -26,6 +26,7 @@
   <span class="bg__aurora bg__aurora--2"></span>
   <span class="bg__aurora bg__aurora--3"></span>
   <span class="bg__grid"></span>
+  <span class="bg__cursor"></span>
   <span class="bg__grain"></span>
 </div>
 
@@ -47,6 +48,7 @@
     <nav class="nav__links" id="navLinks" aria-label="Principal">
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
+      <a href="#panel">Panel</a>
       <a href="#ejemplos">Ejemplos</a>
       <a href="#proceso">Cómo trabajamos</a>
       <a href="#contacto">Contacto</a>
@@ -97,7 +99,7 @@
 
     <figure class="hero__art reveal" style="--d:.12s">
       <div class="hero__frame">
-        <img src="assets/img/hero-salon.webp?v=20261108" width="1400" height="840"
+        <img src="assets/img/hero-salon.webp?v=20261109" width="1400" height="840"
              alt="Dueña de un salón de uñas revisando su negocio desde el móvil mientras un asistente digital muestra las citas del día y el crecimiento de ventas." fetchpriority="high" decoding="async">
       </div>
       <span class="chip chip--1" aria-hidden="true"><i class="chip__dot"></i> Responde solo · 24/7</span>
@@ -206,11 +208,79 @@
   </div>
 </section>
 
+<!-- ============ PANEL EN VIVO ============ -->
+<section class="sec sec--panel" id="panel" aria-labelledby="panel-h">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <p class="kicker"><span class="num">02</span> Así se ve</p>
+      <h2 class="display display--md" id="panel-h">Tu negocio,<br><em>con los números a la vista.</em></h2>
+      <p class="sec__sub">Un panel claro, hecho a tu medida: ventas, pedidos y consultas en una sola pantalla. Elige un rubro y míralo en acción.</p>
+    </header>
+
+    <div class="dash reveal" id="dash">
+      <div class="dash__bar">
+        <span class="dash__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <div class="dash__tabs" role="tablist" aria-label="Elige un tipo de negocio">
+          <button type="button" role="tab" id="tab-almacen" data-k="almacen" aria-selected="true" aria-controls="dashBody" class="is-on">Almacén</button>
+          <button type="button" role="tab" id="tab-salon" data-k="salon" aria-selected="false" aria-controls="dashBody" tabindex="-1">Salón de uñas</button>
+          <button type="button" role="tab" id="tab-taller" data-k="taller" aria-selected="false" aria-controls="dashBody" tabindex="-1">Taller mecánico</button>
+        </div>
+        <span class="dash__badge"><i aria-hidden="true"></i> Demostración con datos de ejemplo</span>
+      </div>
+
+      <div class="dash__body" id="dashBody" role="tabpanel" aria-labelledby="tab-almacen">
+        <div class="dash__head">
+          <div><small>Panel de control</small><strong id="dName">Almacén Don Carlos</strong></div>
+          <span class="live"><i aria-hidden="true"></i> En vivo · simulado</span>
+        </div>
+
+        <div class="kpis" id="kpis">
+          <article class="kpi"><span class="kpi__l">Ventas de hoy</span><strong class="kpi__v">$184.500</strong><span class="kpi__d up">▲ 12% vs ayer</span></article>
+          <article class="kpi"><span class="kpi__l">Pedidos del día</span><strong class="kpi__v">48</strong><span class="kpi__d up">▲ 8% vs ayer</span></article>
+          <article class="kpi"><span class="kpi__l">Consultas respondidas</span><strong class="kpi__v">126</strong><span class="kpi__d up">▲ 92% por el asistente</span></article>
+          <article class="kpi"><span class="kpi__l">Clientes nuevos</span><strong class="kpi__v">17</strong><span class="kpi__d up">▲ 5 más que ayer</span></article>
+        </div>
+
+        <div class="dash__grid">
+          <article class="dcard dcard--a">
+            <header><h3 id="tA">Ventas de la semana</h3><span id="sA">en miles de $</span></header>
+            <svg id="chartA" viewBox="0 0 560 230" role="img" aria-label="Gráfico de barras de ventas de la semana"></svg>
+          </article>
+          <article class="dcard dcard--b">
+            <header><h3 id="tB">Pedidos por hora</h3><span id="sB">hoy</span></header>
+            <svg id="chartB" viewBox="0 0 360 230" role="img" aria-label="Gráfico de línea de pedidos por hora"></svg>
+          </article>
+          <article class="dcard dcard--c">
+            <header><h3 id="tC">Lo más pedido</h3><span id="sC">unidades hoy</span></header>
+            <ul class="hbars" id="hbars"></ul>
+          </article>
+          <article class="dcard dcard--d">
+            <header><h3 id="tD">Origen de los pedidos</h3><span>porcentaje</span></header>
+            <div class="donut">
+              <svg id="donut" viewBox="0 0 120 120" role="img" aria-label="Gráfico circular del origen de los pedidos"></svg>
+              <ul class="legend" id="legend"></ul>
+            </div>
+          </article>
+          <article class="dcard dcard--e">
+            <header><h3>Actividad reciente</h3><span>automática</span></header>
+            <ul class="feed" id="feed"></ul>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel__cta reveal">
+      <p><strong>¿Quieres uno así para tu negocio?</strong> Lo armamos con tus productos, tus servicios y tus números reales.</p>
+      <a class="btn btn--wa" href="https://wa.me/56931721317?text=Hola%20NOA%20IMPULSA%2C%20me%20gust%C3%B3%20el%20panel.%20Quiero%20uno%20para%20mi%20negocio." target="_blank" rel="noopener"><span class="wa-ico" aria-hidden="true"></span> Quiero mi panel</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ EJEMPLOS ============ -->
 <section class="sec sec--cases" id="ejemplos">
   <div class="wrap">
     <header class="sec__head reveal">
-      <p class="kicker"><span class="num">02</span> Ejemplos</p>
+      <p class="kicker"><span class="num">03</span> Ejemplos</p>
       <h2 class="display display--md">Cómo se ve esto<br><em>en un negocio real.</em></h2>
       <p class="sec__sub">Escenarios de ejemplo para que te hagas una idea. Tu caso se arma contigo, desde cero.</p>
     </header>
@@ -218,7 +288,7 @@
     <div class="cases">
       <article class="case case--wide reveal">
         <div class="case__img">
-          <img src="assets/img/caso-almacen.webp?v=20261108" width="1100" height="844" loading="lazy" decoding="async"
+          <img src="assets/img/caso-almacen.webp?v=20261109" width="1100" height="844" loading="lazy" decoding="async"
                alt="Dueño de un almacén de barrio atendiendo pedidos por WhatsApp mientras un panel muestra los pedidos del día y los productos más vendidos.">
         </div>
         <div class="case__body">
@@ -235,7 +305,7 @@
 
       <article class="case reveal" style="--d:.08s">
         <div class="case__img case__img--tall">
-          <img src="assets/img/caso-panel.webp?v=20261108" width="760" height="818" loading="lazy" decoding="async"
+          <img src="assets/img/caso-panel.webp?v=20261109" width="760" height="818" loading="lazy" decoding="async"
                alt="Panel digital mostrando la próxima cita del día y la evolución de las ventas de un salón.">
         </div>
         <div class="case__body">
@@ -247,7 +317,7 @@
 
       <article class="case reveal" style="--d:.16s">
         <div class="case__img case__img--tall case__img--robot">
-          <img src="assets/img/detalle-robot.webp?v=20261108" width="620" height="775" loading="lazy" decoding="async"
+          <img src="assets/img/detalle-robot.webp?v=20261109" width="620" height="775" loading="lazy" decoding="async"
                alt="Asistente digital de NOA IMPULSA señalando un panel con información del negocio.">
         </div>
         <div class="case__body">
@@ -288,7 +358,7 @@
 <section class="sec sec--process" id="proceso">
   <div class="wrap">
     <header class="sec__head reveal">
-      <p class="kicker"><span class="num">03</span> Cómo trabajamos</p>
+      <p class="kicker"><span class="num">04</span> Cómo trabajamos</p>
       <h2 class="display display--md">Cuatro pasos.<br><em>Sin letra chica.</em></h2>
     </header>
 
@@ -347,7 +417,7 @@
   <div class="wrap contact__in">
 
     <div class="contact__copy reveal">
-      <p class="kicker"><span class="num">04</span> Contacto</p>
+      <p class="kicker"><span class="num">05</span> Contacto</p>
       <h2 class="display display--md">Cuéntanos qué<br><em>te está costando.</em></h2>
       <p class="sec__sub">Escríbenos y te respondemos con una propuesta concreta y su precio. La primera conversación no cuesta nada.</p>
 
@@ -449,6 +519,6 @@
   <span class="wafab__txt">Cotiza gratis</span>
 </a>
 
-<script defer src="main.js?v=20261108"></script>
+<script defer src="main.js?v=20261109"></script>
 </body>
 </html>
