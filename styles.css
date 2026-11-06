@@ -715,3 +715,38 @@ main,.foot{position:relative;z-index:1}
   .phone__glow{animation:none}
   .phone:hover .phone__body{transform:none}
 }
+
+
+/* ---------- selector de videos ---------- */
+.vsels{display:grid;gap:12px;margin:26px 0 30px}
+.vsel{
+  position:relative;overflow:hidden;text-align:left;cursor:pointer;
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;
+  padding:16px 18px;border-radius:18px;color:var(--txt);
+  background:rgba(255,255,255,.04);border:1px solid var(--line);
+  transition:transform .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease);
+}
+.vsel:hover{transform:translateX(4px);border-color:rgba(23,211,234,.45)}
+.vsel.is-on{border-color:rgba(23,211,234,.7);background:linear-gradient(100deg,rgba(23,211,234,.16),rgba(180,91,255,.08));box-shadow:0 18px 40px -26px rgba(23,211,234,.9)}
+.vsel__i{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;
+  background:rgba(23,211,234,.12);color:var(--cyan);border:1px solid rgba(23,211,234,.26);transition:background .3s,color .3s}
+.vsel__i svg{width:22px;height:22px}
+.vsel.is-on .vsel__i{background:var(--cyan);color:#06121A}
+.vsel__t{display:grid;gap:3px;min-width:0}
+.vsel__t strong{font-size:1rem;font-weight:800;letter-spacing:-.02em}
+.vsel__d{font-size:.84rem;color:var(--mut);line-height:1.4}
+.vsel__s{font-size:.74rem;font-weight:800;letter-spacing:.06em;color:var(--mut);font-variant-numeric:tabular-nums}
+.vsel.is-on .vsel__s{color:var(--cyan)}
+.vsel__bar{position:absolute;left:0;bottom:0;height:3px;width:var(--p,0%);
+  background:linear-gradient(90deg,var(--cyan),var(--lime));opacity:0}
+.vsel.is-on .vsel__bar{opacity:1}
+
+@media(max-width:860px){
+  .vsels{grid-template-columns:repeat(3,1fr);gap:8px;margin:22px 0 24px}
+  .vsel{grid-template-columns:1fr;justify-items:center;text-align:center;gap:8px;padding:12px 8px}
+  .vsel:hover{transform:none}
+  .vsel__d,.vsel__s{display:none}
+  .vsel__i{width:38px;height:38px;border-radius:12px}
+  .vsel__t strong{font-size:.78rem;line-height:1.2}
+}
+@media (prefers-reduced-motion:reduce){.vsel,.vsel:hover{transition:none;transform:none}}

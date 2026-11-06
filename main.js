@@ -542,7 +542,7 @@
       window.setTimeout(function () { if (!armed) { seen = true; arm(); } }, 4500);
     });
 
-    /* ---------- video promocional: se reproduce solo al verlo, sin sonido ---------- */
+    /* ---------- videos promocionales: selector, reproducción al verlos y paso al siguiente ---------- */
     safe('promo', function () {
       var v = document.getElementById('promo');
       if (!v) return;
@@ -551,8 +551,11 @@
       var play = phone.querySelector('.vplay');
       var prog = phone.querySelector('.vprog');
       var bar = prog ? prog.firstElementChild : null;
+      var items = [].slice.call(document.querySelectorAll('.vsel'));
+      var cta = document.getElementById('videoCta');
       var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
       var userPaused = false;
+      var cur = 0;
 
       /* controles propios (sin JS quedan los del navegador) */
       v.controls = false; v.removeAttribute('controls');
@@ -569,6 +572,31 @@
         if (p && p.catch) p.catch(function () { ui(); });
       }
 
+      function select(i, autoplay) {
+        cur = i;
+        items.forEach(function (b, k) {
+          var on = k === i;
+          b.classList.toggle('is-on', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          b.style.setProperty('--p', '0%');
+        });
+        var b = items[i];
+        v.pause();
+        v.setAttribute('poster', b.getAttribute('data-poster'));
+        v.src = b.getAttribute('data-src');
+        v.setAttribute('aria-label', b.getAttribute('data-label'));
+        if (cta) cta.href = 'https://wa.me/56992149576?text=' + encodeURIComponent(b.getAttribute('data-msg'));
+        if (bar) bar.style.width = '0%';
+        v.load();
+        userPaused = false;
+        if (autoplay && !reduce) tryPlay();
+        ui();
+      }
+
+      items.forEach(function (b, k) {
+        b.addEventListener('click', function () { if (k !== cur || v.paused) select(k, true); });
+      });
+
       play.addEventListener('click', function () { userPaused = false; tryPlay(); });
       v.addEventListener('click', function () {
         if (v.paused) { userPaused = false; tryPlay(); }
@@ -583,8 +611,13 @@
       v.addEventListener('pause', ui);
       v.addEventListener('volumechange', ui);
       v.addEventListener('timeupdate', function () {
-        if (bar && v.duration) bar.style.width = (v.currentTime / v.duration * 100) + '%';
+        if (!v.duration) return;
+        var pct = (v.currentTime / v.duration * 100) + '%';
+        if (bar) bar.style.width = pct;
+        if (items[cur]) items[cur].style.setProperty('--p', pct);
       });
+      /* al terminar uno, sigue el siguiente */
+      v.addEventListener('ended', function () { select((cur + 1) % items.length, true); });
 
       if (!reduce && 'IntersectionObserver' in window) {
         var io = new IntersectionObserver(function (entries) {

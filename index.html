@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261112">
+<link rel="stylesheet" href="styles.css?v=20261113">
 </head>
 <body>
 
@@ -99,7 +99,7 @@
 
     <figure class="hero__art reveal" style="--d:.12s">
       <div class="hero__frame">
-        <img src="assets/img/hero-salon.webp?v=20261112" width="1400" height="840"
+        <img src="assets/img/hero-salon.webp?v=20261113" width="1400" height="840"
              alt="Dueña de un salón de uñas revisando su negocio desde el móvil mientras un asistente digital muestra las citas del día y el crecimiento de ventas." fetchpriority="high" decoding="async">
       </div>
       <span class="chip chip--1" aria-hidden="true"><i class="chip__dot"></i> Responde solo · 24/7</span>
@@ -288,7 +288,7 @@
     <div class="cases">
       <article class="case case--wide reveal">
         <div class="case__img">
-          <img src="assets/img/caso-almacen.webp?v=20261112" width="1100" height="844" loading="lazy" decoding="async"
+          <img src="assets/img/caso-almacen.webp?v=20261113" width="1100" height="844" loading="lazy" decoding="async"
                alt="Dueño de un almacén de barrio atendiendo pedidos por WhatsApp mientras un panel muestra los pedidos del día y los productos más vendidos.">
         </div>
         <div class="case__body">
@@ -305,7 +305,7 @@
 
       <article class="case reveal" style="--d:.08s">
         <div class="case__img case__img--tall">
-          <img src="assets/img/caso-panel.webp?v=20261112" width="760" height="818" loading="lazy" decoding="async"
+          <img src="assets/img/caso-panel.webp?v=20261113" width="760" height="818" loading="lazy" decoding="async"
                alt="Panel digital mostrando la próxima cita del día y la evolución de las ventas de un salón.">
         </div>
         <div class="case__body">
@@ -317,7 +317,7 @@
 
       <article class="case reveal" style="--d:.16s">
         <div class="case__img case__img--tall case__img--robot">
-          <img src="assets/img/detalle-robot.webp?v=20261112" width="620" height="775" loading="lazy" decoding="async"
+          <img src="assets/img/detalle-robot.webp?v=20261113" width="620" height="775" loading="lazy" decoding="async"
                alt="Asistente digital de NOA IMPULSA señalando un panel con información del negocio.">
         </div>
         <div class="case__body">
@@ -338,24 +338,48 @@
 
     <div class="video__copy reveal">
       <p class="kicker"><span class="dot" aria-hidden="true"></span> Míralo en acción</p>
-      <h2 class="display display--md" id="video-h">Todo NOA IMPULSA,<br><em>en 12 segundos.</em></h2>
-      <p class="sec__sub">Así ayudamos a un negocio como el tuyo a que lo encuentren, lo contacten y le compren. Sin complicaciones y sin presupuestos de otro planeta.</p>
+      <h2 class="display display--md" id="video-h">Tres formas de ayudarte,<br><em>en menos de 20 segundos.</em></h2>
+      <p class="sec__sub">Toca una y míralo en el celular. Sin tecnicismos y sin presupuestos de otro planeta.</p>
 
-      <ul class="video__pts">
-        <li><span class="tick" aria-hidden="true">✓</span> Tu página lista para que te encuentren</li>
-        <li><span class="tick" aria-hidden="true">✓</span> Pedidos y consultas directo a tu WhatsApp</li>
-        <li><span class="tick" aria-hidden="true">✓</span> Tecnología al precio que corresponde</li>
-      </ul>
+      <div class="vsels" role="group" aria-label="Elige qué video ver">
+        <button type="button" class="vsel is-on" data-i="0" aria-pressed="true"
+                data-src="assets/video/noa-comercial.mp4?v=20261113" data-poster="assets/video/poster.webp?v=20261113"
+                data-label="Video de 12 segundos: tu página web lista para que te encuentren"
+                data-msg="Hola NOA IMPULSA, vi el video de la página web y quiero cotizar.">
+          <span class="vsel__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg></span>
+          <span class="vsel__t"><strong>Tu página web</strong><span class="vsel__d">Que te encuentren en Google y te escriban directo a WhatsApp.</span></span>
+          <span class="vsel__s">12 s</span>
+          <span class="vsel__bar" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="vsel" data-i="1" aria-pressed="false"
+                data-src="assets/video/noa-sistema.mp4?v=20261113" data-poster="assets/video/poster-sistema.webp?v=20261113"
+                data-label="Video de 13 segundos: un sistema a medida para ventas, stock y clientes"
+                data-msg="Hola NOA IMPULSA, vi el video del sistema a medida y quiero cotizar.">
+          <span class="vsel__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+          <span class="vsel__t"><strong>Tu sistema a medida</strong><span class="vsel__d">Ventas, stock y clientes en una sola pantalla. Adiós al cuaderno.</span></span>
+          <span class="vsel__s">13 s</span>
+          <span class="vsel__bar" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="vsel" data-i="2" aria-pressed="false"
+                data-src="assets/video/noa-asistente.mp4?v=20261113" data-poster="assets/video/poster-asistente.webp?v=20261113"
+                data-label="Video de 20 segundos: un asistente en tu WhatsApp que responde por ti"
+                data-msg="Hola NOA IMPULSA, vi el video del asistente de WhatsApp y quiero cotizar.">
+          <span class="vsel__i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 20.5l1.7-5.5A8.5 8.5 0 1 1 21 11.5Z"/></svg></span>
+          <span class="vsel__t"><strong>Tu asistente de WhatsApp</strong><span class="vsel__d">Responde precios y horarios, agenda reservas y te avisa de cada pedido.</span></span>
+          <span class="vsel__s">20 s</span>
+          <span class="vsel__bar" aria-hidden="true"></span>
+        </button>
+      </div>
 
-      <a class="btn btn--wa" href="https://wa.me/56992149576?text=Hola%20NOA%20IMPULSA%2C%20vi%20el%20video%20y%20quiero%20mi%20p%C3%A1gina." target="_blank" rel="noopener"><span class="wa-ico" aria-hidden="true"></span> Quiero mi página</a>
+      <a class="btn btn--wa" id="videoCta" href="https://wa.me/56992149576?text=Hola%20NOA%20IMPULSA%2C%20vi%20el%20video%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20cotizar." target="_blank" rel="noopener"><span class="wa-ico" aria-hidden="true"></span> Quiero cotizar lo mío</a>
     </div>
 
     <figure class="phone reveal" id="phone" style="--d:.1s">
       <div class="phone__glow" aria-hidden="true"></div>
       <div class="phone__body">
-        <video id="promo" class="phone__video" poster="assets/video/poster.webp?v=20261112" muted loop playsinline preload="none" controls
-               aria-label="Video de 12 segundos: así ayuda NOA IMPULSA a tu negocio">
-          <source src="assets/video/noa-comercial.mp4?v=20261112" type="video/mp4">
+        <video id="promo" class="phone__video" poster="assets/video/poster.webp?v=20261113" muted playsinline preload="none" controls
+               aria-label="Video de 12 segundos: tu página web lista para que te encuentren">
+          <source src="assets/video/noa-comercial.mp4?v=20261113" type="video/mp4">
           Tu navegador no puede reproducir este video.
         </video>
         <button type="button" class="vplay" hidden aria-label="Reproducir video"><span aria-hidden="true">▶</span></button>
@@ -365,7 +389,7 @@
         </button>
         <span class="vprog" hidden aria-hidden="true"><i></i></span>
       </div>
-      <figcaption>Toca el video para pausar · Activa el sonido con el botón</figcaption>
+      <figcaption>Toca el video para pausar · Sigue solo con el siguiente</figcaption>
     </figure>
 
   </div>
@@ -555,6 +579,6 @@
   <span class="wafab__txt">Cotiza gratis</span>
 </a>
 
-<script defer src="main.js?v=20261112"></script>
+<script defer src="main.js?v=20261113"></script>
 </body>
 </html>
