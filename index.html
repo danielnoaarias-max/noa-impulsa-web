@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261117">
+<link rel="stylesheet" href="styles.css?v=20261118">
 </head>
 <body>
 
@@ -42,6 +42,7 @@
     <nav class="nav__links" id="navLinks" aria-label="Principal">
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
+      <a href="#asistente">Asistente</a>
       <a href="#panel">Panel</a>
       <a href="#ejemplos">Ejemplos</a>
       <a href="#proceso">Cómo trabajamos</a>
@@ -81,6 +82,7 @@
         <a data-umami-event="wa-portada" class="btn btn--wa" href="https://wa.me/56992149576?text=Hola%20NOA%20IMPULSA%2C%20quiero%20impulsar%20mi%20negocio.%20%C2%BFMe%20cuentan%20c%C3%B3mo%20trabajan%3F" target="_blank" rel="noopener">
           <span class="wa-ico" aria-hidden="true"></span> Quiero impulsar mi negocio
         </a>
+        <a data-umami-event="hero-asistente" class="btn btn--ghost hero__try" href="#asistente">💬 Prueba el asistente de WhatsApp</a>
         <a class="btn btn--ghost" href="#servicios">Conocer servicios <span aria-hidden="true">→</span></a>
       </div>
 
@@ -267,6 +269,56 @@
       <p><strong>¿Quieres uno así para tu negocio?</strong> Lo armamos con tus productos, tus servicios y tus números reales.</p>
       <a data-umami-event="wa-panel" class="btn btn--wa" href="https://wa.me/56992149576?text=Hola%20NOA%20IMPULSA%2C%20me%20gust%C3%B3%20el%20panel.%20Quiero%20uno%20para%20mi%20negocio." target="_blank" rel="noopener"><span class="wa-ico" aria-hidden="true"></span> Quiero mi panel</a>
     </div>
+  </div>
+</section>
+
+<!-- ============ ASISTENTE DE WHATSAPP (DEMO) ============ -->
+<section class="sec sec--chat" id="asistente" aria-labelledby="chat-h">
+  <div class="wrap chat__in">
+
+    <div class="chat__phone reveal">
+      <div class="phone chatphone">
+        <div class="phone__glow" aria-hidden="true"></div>
+        <span class="chat__tag" aria-hidden="true">👇 Pruébalo tú</span>
+        <div class="phone__body">
+          <div class="wa" id="wa">
+            <div class="wa__top">
+              <span class="wa__back" aria-hidden="true">‹</span>
+              <img class="wa__av" src="assets/img/chip.png?v=20261118" width="40" height="40" alt="">
+              <div class="wa__who">
+                <strong>Peluquería Corte Fino</strong>
+                <small><i aria-hidden="true"></i> en línea · responde al instante</small>
+              </div>
+              <button type="button" class="wa__reset" id="waReset" aria-label="Reiniciar la conversación" title="Reiniciar">↻</button>
+            </div>
+            <div class="wa__msgs" id="waMsgs" role="log" aria-live="polite" aria-label="Conversación de ejemplo"></div>
+            <div class="wa__quick" id="waQuick"></div>
+            <form class="wa__bar" id="waForm" autocomplete="off">
+              <input type="text" id="waInput" maxlength="80" placeholder="Escribe un mensaje…" aria-label="Escribe un mensaje de prueba">
+              <button type="submit" aria-label="Enviar">➤</button>
+            </form>
+          </div>
+        </div>
+        <p class="chat__note">Demo con datos de ejemplo</p>
+      </div>
+    </div>
+
+    <div class="chat__copy reveal" style="--d:.1s">
+      <p class="kicker"><span class="dot" aria-hidden="true"></span> Pruébalo en vivo</p>
+      <h2 class="display display--md" id="chat-h">Así atendería <em>tu WhatsApp</em> mientras tú trabajas.</h2>
+      <p class="sec__sub">Esto es un ejemplo con una peluquería inventada. Toca los botones o escribe algo: agenda horas, responde precios y avisa al dueño, sin que nadie esté pegado al teléfono.</p>
+      <ul class="video__pts">
+        <li><span class="tick" aria-hidden="true">✓</span> Responde al instante, de día y de noche</li>
+        <li><span class="tick" aria-hidden="true">✓</span> Agenda y confirma reservas solo</li>
+        <li><span class="tick" aria-hidden="true">✓</span> Te avisa a ti cuando alguien quiere comprar</li>
+        <li><span class="tick" aria-hidden="true">✓</span> Con los datos reales de tu negocio</li>
+      </ul>
+      <div class="chat__ctas">
+        <button type="button" class="btn btn--primary" id="waTry" data-umami-event="demo-probar">💬 Probar el asistente</button>
+        <a data-umami-event="wa-asistente" class="btn btn--wa" href="https://wa.me/56992149576?text=Hola%20NOA%20IMPULSA%2C%20prob%C3%A9%20el%20asistente%20de%20WhatsApp%20y%20quiero%20uno%20para%20mi%20negocio." target="_blank" rel="noopener"><span class="wa-ico" aria-hidden="true"></span> Quiero uno para mi negocio</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -668,6 +720,6 @@
 </a>
 
 <script defer src="https://cloud.umami.is/script.js" data-website-id="14104b98-e2eb-40bd-ac0b-6cc85ce6bb24" data-domains="noaimpulsa.netlify.app"></script>
-<script defer src="main.js?v=20261117"></script>
+<script defer src="main.js?v=20261118"></script>
 </body>
 </html>

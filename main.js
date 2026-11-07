@@ -635,6 +635,154 @@
     });
 
     /* ---------- formulario: envío sin recargar + aviso ---------- */
+    /* ---------- demo: asistente de WhatsApp ---------- */
+    safe('wachat', function () {
+      var wa = document.getElementById('wa');
+      if (!wa) return;
+      var msgs = document.getElementById('waMsgs');
+      var quick = document.getElementById('waQuick');
+      var form = document.getElementById('waForm');
+      var input = document.getElementById('waInput');
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var run = 0, busy = false, started = false, firstClick = true, firstMenu = true;
+
+      function track(n) { if (window.umami && window.umami.track) window.umami.track(n); }
+      function clock() { var d = new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+      function down() { msgs.scrollTop = msgs.scrollHeight; }
+      function wait(ms) { return new Promise(function (r) { setTimeout(r, reduce ? 20 : ms); }); }
+
+      function add(text, who) {
+        var m = document.createElement('div');
+        m.className = 'wa__m wa__m--' + who;
+        m.appendChild(document.createTextNode(text));
+        var t = document.createElement('time'); t.textContent = clock(); m.appendChild(t);
+        msgs.appendChild(m); down();
+      }
+      function note(text) {
+        var n = document.createElement('div'); n.className = 'wa__note'; n.textContent = text;
+        msgs.appendChild(n); down();
+      }
+      function clearQuick() { quick.innerHTML = ''; quick.classList.remove('is-first'); }
+      function options(list) {
+        clearQuick();
+        if (firstMenu) { quick.classList.add('is-first'); firstMenu = false; }
+        list.forEach(function (o) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.textContent = o[0];
+          b.addEventListener('click', function () { choose(o[0], o[1]); });
+          quick.appendChild(b);
+        });
+      }
+      function say(lines, id) {
+        // muestra "escribiendo..." y luego cada mensaje, uno tras otro
+        var my = run;
+        busy = true;
+        return lines.reduce(function (p, line) {
+          return p.then(function () {
+            if (my !== run) return;
+            var ty = document.createElement('div'); ty.className = 'wa__typing';
+            ty.innerHTML = '<i></i><i></i><i></i>'; msgs.appendChild(ty); down();
+            return wait(650 + Math.min(line.length * 12, 700)).then(function () {
+              if (ty.parentNode) ty.parentNode.removeChild(ty);
+              if (my !== run) return;
+              if (line.charAt(0) === '#') note(line.slice(1)); else add(line, 'bot');
+            });
+          });
+        }, Promise.resolve()).then(function () { if (my === run) busy = false; });
+      }
+      function choose(label, fn) {
+        if (busy) return;
+        if (firstClick) { firstClick = false; track('demo-chat-uso'); }
+        clearQuick(); add(label, 'me'); fn();
+      }
+
+      var order = {};
+      var menu = [['📅 Agendar una hora', agendar], ['💈 Servicios y precios', servicios], ['📍 Horarios y ubicación', info], ['👤 Hablar con una persona', persona]];
+      function toMenu() { options(menu); }
+      function start() {
+        if (started) return; started = true;
+        say(['¡Hola! 👋 Soy el asistente de Peluquería Corte Fino.', '¿En qué te puedo ayudar?']).then(toMenu);
+      }
+      function servicios() {
+        say(['Estos son nuestros servicios:\n✂️ Corte de pelo · $9.000\n🧔 Barba · $5.000\n💈 Corte + barba · $12.000\n🎨 Color · desde $25.000']).then(function () {
+          options([['📅 Agendar una hora', agendar], ['⬅ Volver al menú', function () { say(['Claro, ¿qué más necesitas?']).then(toMenu); }]]);
+        });
+      }
+      function info() {
+        say(['Atendemos de lunes a sábado, de 10:00 a 20:00. Domingo cerrado.', '📍 Av. Ejemplo 1234, Providencia.\nA 2 cuadras del metro.']).then(function () {
+          options([['📅 Agendar una hora', agendar], ['⬅ Volver al menú', function () { say(['Dime, ¿en qué más te ayudo?']).then(toMenu); }]]);
+        });
+      }
+      function persona() {
+        say(['Claro, te paso con Camila 🙌 Te escribe en unos minutos.', '#🔔 El equipo recibió tu solicitud']).then(function () {
+          options([['⬅ Volver al menú', function () { say(['¡Perfecto! Cuando quieras seguimos por aquí.']).then(toMenu); }]]);
+        });
+      }
+      function agendar() {
+        say(['¡Genial! ¿Qué servicio quieres?']).then(function () {
+          options([['Corte de pelo', function () { dia('Corte de pelo'); }], ['Barba', function () { dia('Barba'); }], ['Corte + barba', function () { dia('Corte + barba'); }]]);
+        });
+      }
+      function dia(s) {
+        order.s = s;
+        say(['¿Qué día te acomoda?']).then(function () {
+          options([['Hoy', function () { hora('hoy'); }], ['Mañana', function () { hora('mañana'); }], ['Sábado', function () { hora('el sábado'); }]]);
+        });
+      }
+      function hora(d) {
+        order.d = d;
+        say(['Tengo estas horas libres ' + d + ':']).then(function () {
+          options(['11:00', '15:30', '18:00'].map(function (h) { return [h, function () { listo(h); }]; }));
+        });
+      }
+      function listo(h) {
+        track('demo-chat-reserva');
+        say(['Listo ✅ Te reservé:\n✂️ ' + order.s + '\n📅 ' + order.d + ' a las ' + h, 'Te mando un recordatorio 2 horas antes. Si no puedes venir, avísame por aquí y libero tu hora.', '#🔔 Aviso enviado al dueño: nueva reserva']).then(function () {
+          options([['📅 Agendar otra', agendar], ['⬅ Volver al menú', function () { say(['¡Con gusto! ¿Algo más?']).then(toMenu); }]]);
+        });
+      }
+
+      function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = input.value.trim();
+        if (!v || busy) return;
+        if (!started) { start(); return; }
+        input.value = '';
+        if (firstClick) { firstClick = false; track('demo-chat-uso'); }
+        clearQuick(); add(v, 'me');
+        var n = norm(v);
+        if (/agend|reserv|hora|cita|turno/.test(n)) agendar();
+        else if (/precio|cuesta|valor|cuanto|servicio|corte|barba|color/.test(n)) servicios();
+        else if (/donde|ubic|direcc|horario|abre|abren|cierr|metro/.test(n)) info();
+        else if (/persona|humano|alguien|ayuda|reclamo/.test(n)) persona();
+        else if (/hola|buenas|buen dia|buenos/.test(n)) say(['¡Hola! 😊 ¿En qué te puedo ayudar?']).then(toMenu);
+        else say(['Esto es una demo con respuestas de ejemplo 🙂 En tu negocio, el asistente responde con tu información real.', 'Elige una opción:']).then(toMenu);
+      });
+
+      function reset() {
+        run++; busy = false; started = false; firstMenu = true;
+        msgs.innerHTML = ''; clearQuick(); order = {};
+        start();
+      }
+      document.getElementById('waReset').addEventListener('click', reset);
+
+      var tryBtn = document.getElementById('waTry');
+      if (tryBtn) tryBtn.addEventListener('click', function () {
+        var ph = wa.closest('.chat__phone');
+        if (ph && ph.scrollIntoView) ph.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+        start();
+        setTimeout(function () { try { input.focus({ preventScroll: true }); } catch (e) {} }, 600);
+      });
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (en) { if (en.isIntersecting) { setTimeout(start, 500); io.disconnect(); } });
+        }, { threshold: 0.4 });
+        io.observe(wa);
+      } else { start(); }
+    });
+
     safe('form', function () {
       var form = document.getElementById('contactForm');
       if (!form) return;

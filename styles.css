@@ -185,7 +185,8 @@ main,.foot{position:relative;z-index:1}
 .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-@media(max-width:940px){
+.nav__links a{white-space:nowrap}
+@media(max-width:1080px){
   .burger{display:flex}
   .nav__links{
     position:fixed;inset:66px 14px auto;flex-direction:column;align-items:stretch;gap:4px;
@@ -825,3 +826,62 @@ main,.foot{position:relative;z-index:1}
 .brand__logo{display:block;height:46px;width:auto}
 .foot__logo{display:block;height:64px;width:auto;margin-bottom:14px}
 @media(max-width:760px){.brand__logo{height:40px}}
+
+/* ===========================================================
+   ASISTENTE DE WHATSAPP (DEMO INTERACTIVA)
+   =========================================================== */
+.sec--chat{background:linear-gradient(180deg,rgba(13,19,48,.55),rgba(7,10,24,.3));overflow:hidden}
+.chat__in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,6vw,84px);align-items:center}
+.chat__phone{justify-self:center;width:100%;display:flex;justify-content:center}
+.chatphone{width:min(100%,340px)}
+.chat__tag{position:absolute;z-index:3;top:-14px;right:-6px;padding:9px 15px;border-radius:999px;font-size:.8rem;font-weight:800;
+  background:var(--lime);color:#121A02;box-shadow:0 14px 30px -12px rgba(198,245,63,.8);animation:tagBob 2.4s ease-in-out infinite}
+@keyframes tagBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.chat__note{margin-top:20px;text-align:center;font-size:.74rem;letter-spacing:.04em;color:rgba(232,236,248,.45)}
+.chat__ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+
+.wa{display:flex;flex-direction:column;height:590px;border-radius:38px;overflow:hidden;background:#0B141A;color:#E9EDEF;font-size:.9rem;line-height:1.4}
+.wa__top{display:flex;align-items:center;gap:10px;padding:34px 14px 12px;background:#1F2C34;flex:none}
+.wa__back{font-size:1.7rem;line-height:1;color:#8696A0;margin-right:-4px}
+.wa__av{width:40px;height:40px;border-radius:50%;background:#0B141A;padding:5px;object-fit:contain;flex:none}
+.wa__who{display:flex;flex-direction:column;min-width:0;flex:1}
+.wa__who strong{font-size:.95rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wa__who small{font-size:.7rem;color:#8696A0;display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wa__who small i{width:7px;height:7px;border-radius:50%;background:#25D366;flex:none}
+.wa__reset{flex:none;width:34px;height:34px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.08);color:#C7D0D6;font-size:1.05rem;transition:background .25s var(--ease),transform .4s var(--ease)}
+.wa__reset:hover{background:rgba(37,211,102,.35);transform:rotate(180deg)}
+
+.wa__msgs{flex:1;overflow-y:auto;padding:14px 12px 8px;display:flex;flex-direction:column;gap:6px;
+  background:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1.2px) 0 0/18px 18px,#0B141A;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.2) transparent}
+.wa__m{max-width:84%;padding:7px 10px 5px;border-radius:10px;white-space:pre-line;word-wrap:break-word;
+  animation:waIn .32s var(--ease) both;box-shadow:0 1px 1px rgba(0,0,0,.3)}
+.wa__m--bot{align-self:flex-start;background:#202C33;border-top-left-radius:2px}
+.wa__m--me{align-self:flex-end;background:#005C4B;border-top-right-radius:2px}
+.wa__m time{display:block;text-align:right;font-size:.62rem;color:rgba(233,237,239,.5);margin-top:2px}
+.wa__note{align-self:center;max-width:92%;text-align:center;margin:6px 0;padding:6px 12px;border-radius:9px;font-size:.74rem;font-weight:600;
+  background:rgba(198,245,63,.12);border:1px solid rgba(198,245,63,.3);color:#D7F27B;animation:waIn .4s var(--ease) both}
+.wa__typing{align-self:flex-start;display:flex;gap:4px;padding:11px 13px;border-radius:10px;border-top-left-radius:2px;background:#202C33}
+.wa__typing i{width:7px;height:7px;border-radius:50%;background:#8696A0;animation:waDot 1.1s ease-in-out infinite}
+.wa__typing i:nth-child(2){animation-delay:.18s}.wa__typing i:nth-child(3){animation-delay:.36s}
+@keyframes waDot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+@keyframes waIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+
+.wa__quick{flex:none;display:flex;flex-wrap:wrap;gap:7px;padding:8px 12px;background:#0B141A;min-height:58px;max-height:none}
+.wa__quick button{padding:8px 13px;border-radius:999px;border:1px solid rgba(37,211,102,.55);background:rgba(37,211,102,.1);color:#7BEFA6;
+  font:inherit;font-size:.82rem;font-weight:700;cursor:pointer;animation:waIn .35s var(--ease) both;transition:background .2s,transform .2s,color .2s}
+.wa__quick button:hover,.wa__quick button:focus-visible{background:#25D366;color:#04240F;transform:translateY(-1px)}
+.wa__quick.is-first button{animation:waIn .35s var(--ease) both,quickPulse 2s ease-in-out 1.2s 3}
+@keyframes quickPulse{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}50%{box-shadow:0 0 0 7px rgba(37,211,102,0)}}
+.wa__bar{flex:none;display:flex;gap:8px;padding:8px 12px 18px;background:#0B141A}
+.wa__bar input{flex:1;min-width:0;padding:11px 15px;border-radius:999px;border:0;background:#2A3942;color:#E9EDEF;font:inherit;font-size:.88rem}
+.wa__bar input::placeholder{color:#8696A0}
+.wa__bar input:focus{outline:2px solid rgba(37,211,102,.6)}
+.wa__bar button{flex:none;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;background:#25D366;color:#04240F;font-size:1rem;font-weight:900}
+
+@media(max-width:860px){
+  .chat__in{grid-template-columns:1fr}
+  .chat__copy{order:-1}
+  .chat__ctas .btn{width:100%}
+  .wa{height:560px}
+}
+@media (prefers-reduced-motion:reduce){.chat__tag,.wa__typing i,.wa__quick.is-first button{animation:none}.wa__m,.wa__note,.wa__quick button{animation:none}}
