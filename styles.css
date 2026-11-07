@@ -820,3 +820,8 @@ main,.foot{position:relative;z-index:1}
   .about__copy{padding-top:14px}
 }
 @media (prefers-reduced-motion:reduce){.about__chip i,.pcard,.faq details,.faq summary::after{animation:none;transition:none}.pcard:hover{transform:none}}
+
+/* logo real */
+.brand__logo{display:block;height:46px;width:auto}
+.foot__logo{display:block;height:64px;width:auto;margin-bottom:14px}
+@media(max-width:760px){.brand__logo{height:40px}}
