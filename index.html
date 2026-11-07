@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261118">
+<link rel="stylesheet" href="styles.css?v=20261119">
 </head>
 <body>
 
@@ -42,10 +42,9 @@
     <nav class="nav__links" id="navLinks" aria-label="Principal">
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
-      <a href="#asistente">Asistente</a>
-      <a href="#panel">Panel</a>
-      <a href="#ejemplos">Ejemplos</a>
+      <a href="#accion">En acción</a>
       <a href="#proceso">Cómo trabajamos</a>
+      <a href="#precio">Precio</a>
       <a href="#contacto">Contacto</a>
       <a data-umami-event="wa-menu" class="btn btn--sm btn--wa nav__cta" href="https://wa.me/56992149576?text=Hola%20NOA%20IMPULSA%2C%20quiero%20una%20cotizaci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">
         <span class="wa-ico" aria-hidden="true"></span> Cotiza gratis
@@ -82,7 +81,7 @@
         <a data-umami-event="wa-portada" class="btn btn--wa" href="https://wa.me/56992149576?text=Hola%20NOA%20IMPULSA%2C%20quiero%20impulsar%20mi%20negocio.%20%C2%BFMe%20cuentan%20c%C3%B3mo%20trabajan%3F" target="_blank" rel="noopener">
           <span class="wa-ico" aria-hidden="true"></span> Quiero impulsar mi negocio
         </a>
-        <a data-umami-event="hero-asistente" class="btn btn--ghost hero__try" href="#asistente">💬 Prueba el asistente de WhatsApp</a>
+        <a data-umami-event="hero-asistente" class="btn btn--ghost hero__try" href="#accion" data-act="paneChat">💬 Prueba el asistente de WhatsApp</a>
         <a class="btn btn--ghost" href="#servicios">Conocer servicios <span aria-hidden="true">→</span></a>
       </div>
 
@@ -204,16 +203,70 @@
   </div>
 </section>
 
-<!-- ============ PANEL EN VIVO ============ -->
-<section class="sec sec--panel" id="panel" aria-labelledby="panel-h">
+<!-- ============ EN ACCION (ASISTENTE + PANEL) ============ -->
+<section class="sec sec--action" id="accion" aria-labelledby="accion-h">
   <div class="wrap">
     <header class="sec__head reveal">
-      <p class="kicker"><span class="num">02</span> Así se ve</p>
-      <h2 class="display display--md" id="panel-h">Tu negocio,<br><em>con los números a la vista.</em></h2>
-      <p class="sec__sub">Un panel claro, hecho a tu medida: ventas, pedidos y consultas en una sola pantalla. Elige un rubro y míralo en acción.</p>
+      <p class="kicker"><span class="num">02</span> Míralo en acción</p>
+      <h2 class="display display--md" id="accion-h">Pruébalo tú mismo,<br><em>antes de contratar.</em></h2>
+      <p class="sec__sub">Dos ejemplos reales de lo que armamos para pymes. Cambia de uno a otro y juega con ellos.</p>
     </header>
 
-    <div class="dash reveal" id="dash">
+    <div class="acttabs reveal" role="tablist" aria-label="Elige un ejemplo">
+      <button type="button" role="tab" id="actTabChat" data-p="paneChat" aria-selected="true" aria-controls="paneChat" class="is-on">💬 Asistente de WhatsApp</button>
+      <button type="button" role="tab" id="actTabPanel" data-p="panePanel" aria-selected="false" aria-controls="panePanel" tabindex="-1">📊 Panel de control</button>
+    </div>
+
+    <div class="actpane" id="paneChat" role="tabpanel" aria-labelledby="actTabChat">
+<div class="chat__in">
+
+    <div class="chat__phone reveal">
+      <div class="phone chatphone">
+        <div class="phone__glow" aria-hidden="true"></div>
+        <span class="chat__tag" aria-hidden="true">👇 Pruébalo tú</span>
+        <div class="phone__body">
+          <div class="wa" id="wa">
+            <div class="wa__top">
+              <span class="wa__back" aria-hidden="true">‹</span>
+              <img class="wa__av" src="assets/img/chip.png?v=20261118" width="40" height="40" alt="">
+              <div class="wa__who">
+                <strong>Peluquería Corte Fino</strong>
+                <small><i aria-hidden="true"></i> en línea · responde al instante</small>
+              </div>
+              <button type="button" class="wa__reset" id="waReset" aria-label="Reiniciar la conversación" title="Reiniciar">↻</button>
+            </div>
+            <div class="wa__msgs" id="waMsgs" role="log" aria-live="polite" aria-label="Conversación de ejemplo"></div>
+            <div class="wa__quick" id="waQuick"></div>
+            <form class="wa__bar" id="waForm" autocomplete="off">
+              <input type="text" id="waInput" maxlength="80" placeholder="Escribe un mensaje…" aria-label="Escribe un mensaje de prueba">
+              <button type="submit" aria-label="Enviar">➤</button>
+            </form>
+          </div>
+        </div>
+        <p class="chat__note">Demo con datos de ejemplo</p>
+      </div>
+    </div>
+
+    <div class="chat__copy reveal" style="--d:.1s">
+      <p class="kicker"><span class="dot" aria-hidden="true"></span> Pruébalo en vivo</p>
+      <h3 class="display display--md" id="chat-h">Así atendería <em>tu WhatsApp</em> mientras tú trabajas.</h3>
+      <p class="sec__sub">Esto es un ejemplo con una peluquería inventada. Toca los botones o escribe algo: agenda horas, responde precios y avisa al dueño, sin que nadie esté pegado al teléfono.</p>
+      <ul class="video__pts">
+        <li><span class="tick" aria-hidden="true">✓</span> Responde al instante, de día y de noche</li>
+        <li><span class="tick" aria-hidden="true">✓</span> Agenda y confirma reservas solo</li>
+        <li><span class="tick" aria-hidden="true">✓</span> Te avisa a ti cuando alguien quiere comprar</li>
+        <li><span class="tick" aria-hidden="true">✓</span> Con los datos reales de tu negocio</li>
+      </ul>
+      <div class="chat__ctas">
+        <button type="button" class="btn btn--primary" id="waTry" data-umami-event="demo-probar">💬 Probar el asistente</button>
+        <a data-umami-event="wa-asistente" class="btn btn--wa" href="https://wa.me/56992149576?text=Hola%20NOA%20IMPULSA%2C%20prob%C3%A9%20el%20asistente%20de%20WhatsApp%20y%20quiero%20uno%20para%20mi%20negocio." target="_blank" rel="noopener"><span class="wa-ico" aria-hidden="true"></span> Quiero uno para mi negocio</a>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="actpane" id="panePanel" role="tabpanel" aria-labelledby="actTabPanel" hidden>
+<div class="dash reveal" id="dash">
       <div class="dash__bar">
         <span class="dash__dots" aria-hidden="true"><i></i><i></i><i></i></span>
         <div class="dash__tabs" role="tablist" aria-label="Elige un tipo de negocio">
@@ -227,7 +280,11 @@
       <div class="dash__body" id="dashBody" role="tabpanel" aria-labelledby="tab-almacen">
         <div class="dash__head">
           <div><small>Panel de control</small><strong id="dName">Almacén Don Carlos</strong></div>
-          <span class="live"><i aria-hidden="true"></i> En vivo · simulado</span>
+          <div class="dash__act">
+            <span class="live"><i aria-hidden="true"></i> En vivo · simulado</span>
+            <button type="button" class="dsim" id="dashSim">＋ Simular pedido nuevo</button>
+            <span class="dsim__msg" id="simMsg" aria-live="polite"></span>
+          </div>
         </div>
 
         <div class="kpis" id="kpis">
@@ -265,116 +322,11 @@
       </div>
     </div>
 
-    <div class="panel__cta reveal">
+<div class="panel__cta reveal">
       <p><strong>¿Quieres uno así para tu negocio?</strong> Lo armamos con tus productos, tus servicios y tus números reales.</p>
       <a data-umami-event="wa-panel" class="btn btn--wa" href="https://wa.me/56992149576?text=Hola%20NOA%20IMPULSA%2C%20me%20gust%C3%B3%20el%20panel.%20Quiero%20uno%20para%20mi%20negocio." target="_blank" rel="noopener"><span class="wa-ico" aria-hidden="true"></span> Quiero mi panel</a>
     </div>
-  </div>
-</section>
-
-<!-- ============ ASISTENTE DE WHATSAPP (DEMO) ============ -->
-<section class="sec sec--chat" id="asistente" aria-labelledby="chat-h">
-  <div class="wrap chat__in">
-
-    <div class="chat__phone reveal">
-      <div class="phone chatphone">
-        <div class="phone__glow" aria-hidden="true"></div>
-        <span class="chat__tag" aria-hidden="true">👇 Pruébalo tú</span>
-        <div class="phone__body">
-          <div class="wa" id="wa">
-            <div class="wa__top">
-              <span class="wa__back" aria-hidden="true">‹</span>
-              <img class="wa__av" src="assets/img/chip.png?v=20261118" width="40" height="40" alt="">
-              <div class="wa__who">
-                <strong>Peluquería Corte Fino</strong>
-                <small><i aria-hidden="true"></i> en línea · responde al instante</small>
-              </div>
-              <button type="button" class="wa__reset" id="waReset" aria-label="Reiniciar la conversación" title="Reiniciar">↻</button>
-            </div>
-            <div class="wa__msgs" id="waMsgs" role="log" aria-live="polite" aria-label="Conversación de ejemplo"></div>
-            <div class="wa__quick" id="waQuick"></div>
-            <form class="wa__bar" id="waForm" autocomplete="off">
-              <input type="text" id="waInput" maxlength="80" placeholder="Escribe un mensaje…" aria-label="Escribe un mensaje de prueba">
-              <button type="submit" aria-label="Enviar">➤</button>
-            </form>
-          </div>
-        </div>
-        <p class="chat__note">Demo con datos de ejemplo</p>
-      </div>
     </div>
-
-    <div class="chat__copy reveal" style="--d:.1s">
-      <p class="kicker"><span class="dot" aria-hidden="true"></span> Pruébalo en vivo</p>
-      <h2 class="display display--md" id="chat-h">Así atendería <em>tu WhatsApp</em> mientras tú trabajas.</h2>
-      <p class="sec__sub">Esto es un ejemplo con una peluquería inventada. Toca los botones o escribe algo: agenda horas, responde precios y avisa al dueño, sin que nadie esté pegado al teléfono.</p>
-      <ul class="video__pts">
-        <li><span class="tick" aria-hidden="true">✓</span> Responde al instante, de día y de noche</li>
-        <li><span class="tick" aria-hidden="true">✓</span> Agenda y confirma reservas solo</li>
-        <li><span class="tick" aria-hidden="true">✓</span> Te avisa a ti cuando alguien quiere comprar</li>
-        <li><span class="tick" aria-hidden="true">✓</span> Con los datos reales de tu negocio</li>
-      </ul>
-      <div class="chat__ctas">
-        <button type="button" class="btn btn--primary" id="waTry" data-umami-event="demo-probar">💬 Probar el asistente</button>
-        <a data-umami-event="wa-asistente" class="btn btn--wa" href="https://wa.me/56992149576?text=Hola%20NOA%20IMPULSA%2C%20prob%C3%A9%20el%20asistente%20de%20WhatsApp%20y%20quiero%20uno%20para%20mi%20negocio." target="_blank" rel="noopener"><span class="wa-ico" aria-hidden="true"></span> Quiero uno para mi negocio</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============ EJEMPLOS ============ -->
-<section class="sec sec--cases" id="ejemplos">
-  <div class="wrap">
-    <header class="sec__head reveal">
-      <p class="kicker"><span class="num">03</span> Ejemplos</p>
-      <h2 class="display display--md">Cómo se ve esto<br><em>en un negocio real.</em></h2>
-      <p class="sec__sub">Escenarios de ejemplo para que te hagas una idea. Tu caso se arma contigo, desde cero.</p>
-    </header>
-
-    <div class="cases">
-      <article class="case case--wide reveal">
-        <div class="case__img">
-          <img src="assets/img/caso-almacen.webp?v=20261117" width="1100" height="844" loading="lazy" decoding="async"
-               alt="Dueño de un almacén de barrio atendiendo pedidos por WhatsApp mientras un panel muestra los pedidos del día y los productos más vendidos.">
-        </div>
-        <div class="case__body">
-          <p class="case__tag">Almacén de barrio</p>
-          <h3>Los pedidos dejan de perderse en el chat</h3>
-          <p>El cliente pregunta por WhatsApp, el bot responde qué hay y a qué precio, y el pedido queda registrado. Al final del día ves cuánto entró y qué se vendió más.</p>
-          <ul class="case__kpis">
-            <li><strong>24/7</strong><span>Responde siempre</span></li>
-            <li><strong>1 pantalla</strong><span>Todos los pedidos</span></li>
-            <li><strong>0 planillas</strong><span>Nada a mano</span></li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="case reveal" style="--d:.08s">
-        <div class="case__img case__img--tall">
-          <img src="assets/img/caso-panel.webp?v=20261117" width="760" height="818" loading="lazy" decoding="async"
-               alt="Panel digital mostrando la próxima cita del día y la evolución de las ventas de un salón.">
-        </div>
-        <div class="case__body">
-          <p class="case__tag">Salón y estética</p>
-          <h3>La agenda se llena sola</h3>
-          <p>Reservas por WhatsApp, confirmación automática y recordatorio el día antes. Menos horas perdidas por clientes que no llegan.</p>
-        </div>
-      </article>
-
-      <article class="case reveal" style="--d:.16s">
-        <div class="case__img case__img--tall case__img--robot">
-          <img src="assets/img/detalle-robot.webp?v=20261117" width="620" height="775" loading="lazy" decoding="async"
-               alt="Asistente digital de NOA IMPULSA señalando un panel con información del negocio.">
-        </div>
-        <div class="case__body">
-          <p class="case__tag">Taller y servicios</p>
-          <h3>Cotizar sin frenar el trabajo</h3>
-          <p>El asistente toma los datos del cliente, arma la consulta ordenada y te la deja lista. Tú solo revisas y confirmas el precio.</p>
-        </div>
-      </article>
-    </div>
-
-    <p class="cases__note">Ilustraciones y datos conceptuales. Sin pedidos, cifras ni mensajes reales.</p>
   </div>
 </section>
 
@@ -441,28 +393,6 @@
   </div>
 </section>
 
-<!-- ============ CIFRAS ============ -->
-<section class="stats" aria-label="Nuestra forma de trabajar en números">
-  <div class="wrap stats__in">
-    <div class="stat reveal">
-      <strong class="stat__n" data-to="24" data-suffix="/7">0</strong>
-      <span>Tu negocio atendiendo, también cuando tú descansas</span>
-    </div>
-    <div class="stat reveal" style="--d:.07s">
-      <strong class="stat__n" data-to="100" data-suffix="%">0</strong>
-      <span>Hecho a la medida de tu negocio, nada enlatado</span>
-    </div>
-    <div class="stat reveal" style="--d:.14s">
-      <strong class="stat__n" data-to="0">0</strong>
-      <span>Contratos de permanencia ni letra chica</span>
-    </div>
-    <div class="stat reveal" style="--d:.21s">
-      <strong class="stat__n" data-to="1">0</strong>
-      <span>Persona que te responde siempre, sin call center</span>
-    </div>
-  </div>
-</section>
-
 <!-- ============ PROCESO ============ -->
 <section class="sec sec--process" id="proceso">
   <div class="wrap">
@@ -493,19 +423,6 @@
         <p>Te enseñamos a usarlo y seguimos disponibles. Si hay que ajustar algo, se ajusta; no te quedas solo con la herramienta.</p>
       </li>
     </ol>
-  </div>
-</section>
-
-<!-- ============ POR QUÉ ============ -->
-<section class="why" aria-labelledby="why-h">
-  <div class="wrap why__in">
-    <h2 class="display display--md reveal" id="why-h">Precio de pyme,<br><em>trabajo de verdad.</em></h2>
-    <div class="why__grid">
-      <div class="why__item reveal"><h3>Pagas lo que usas</h3><p>Empezamos por lo mínimo que resuelve tu problema. Lo demás se suma cuando el negocio lo pida, no antes.</p></div>
-      <div class="why__item reveal" style="--d:.06s"><h3>Hablas con quien construye</h3><p>Sin call center ni tickets. Tratas directo con la persona que hace el trabajo.</p></div>
-      <div class="why__item reveal" style="--d:.12s"><h3>En español claro</h3><p>Te explicamos todo sin tecnicismos. Si no se entiende, está mal explicado.</p></div>
-      <div class="why__item reveal" style="--d:.18s"><h3>Sin amarres</h3><p>Lo que construimos es tuyo. Nada de quedar atrapado en una plataforma que no controlas.</p></div>
-    </div>
   </div>
 </section>
 
@@ -603,18 +520,6 @@
   </div>
 </section>
 
-<!-- ============ CINTA 2 ============ -->
-<div class="marquee marquee--lime" aria-hidden="true">
-  <div class="marquee__track marquee__track--rev">
-    <span class="marquee__g">
-      <b>Precio de pyme</b><i>✦</i><b>Trato directo</b><i>✦</i><b>Sin letra chica</b><i>✦</i><b>En español claro</b><i>✦</i><b>Sin amarres</b><i>✦</i><b>La primera conversación es gratis</b><i>✦</i>
-    </span>
-    <span class="marquee__g">
-      <b>Precio de pyme</b><i>✦</i><b>Trato directo</b><i>✦</i><b>Sin letra chica</b><i>✦</i><b>En español claro</b><i>✦</i><b>Sin amarres</b><i>✦</i><b>La primera conversación es gratis</b><i>✦</i>
-    </span>
-  </div>
-</div>
-
 <!-- ============ CONTACTO ============ -->
 <section class="sec sec--contact" id="contacto">
   <div class="wrap contact__in">
@@ -699,7 +604,7 @@
     </div>
     <nav class="foot__nav" aria-label="Pie de página">
       <a href="#servicios">Servicios</a>
-      <a href="#ejemplos">Ejemplos</a>
+      <a href="#accion">En acción</a>
       <a href="#proceso">Cómo trabajamos</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -720,6 +625,6 @@
 </a>
 
 <script defer src="https://cloud.umami.is/script.js" data-website-id="14104b98-e2eb-40bd-ac0b-6cc85ce6bb24" data-domains="noaimpulsa.netlify.app"></script>
-<script defer src="main.js?v=20261118"></script>
+<script defer src="main.js?v=20261119"></script>
 </body>
 </html>

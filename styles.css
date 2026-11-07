@@ -885,3 +885,35 @@ main,.foot{position:relative;z-index:1}
   .wa{height:560px}
 }
 @media (prefers-reduced-motion:reduce){.chat__tag,.wa__typing i,.wa__quick.is-first button{animation:none}.wa__m,.wa__note,.wa__quick button{animation:none}}
+
+
+/* ===========================================================
+   EN ACCION: PESTANAS + PANEL INTERACTIVO
+   =========================================================== */
+.sec--action{background:linear-gradient(180deg,rgba(13,19,48,.55),rgba(7,10,24,.3));overflow:hidden}
+.acttabs{display:flex;gap:6px;width:max-content;max-width:100%;margin:6px auto 44px;padding:5px;border-radius:999px;background:rgba(7,10,24,.7);border:1px solid var(--line)}
+.acttabs button{padding:12px 22px;border:0;border-radius:999px;background:transparent;color:var(--mut);font:inherit;font-size:.95rem;font-weight:800;cursor:pointer;white-space:nowrap;transition:background .25s var(--ease),color .25s var(--ease)}
+.acttabs button:hover{color:var(--txt)}
+.acttabs button.is-on{background:var(--lime);color:#121A02;box-shadow:0 10px 24px -12px rgba(198,245,63,.8)}
+.actpane{animation:paneIn .5s var(--ease) both}
+@keyframes paneIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.actpane .panel__cta{margin-top:26px}
+@media(max-width:560px){.acttabs{width:100%}.acttabs button{flex:1;padding:12px 8px;font-size:.84rem;white-space:normal;line-height:1.2}}
+
+.dash{position:relative}
+.dash__act{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:10px 14px}
+.dsim{padding:9px 16px;border-radius:999px;border:1px solid rgba(198,245,63,.6);background:rgba(198,245,63,.12);color:var(--lime);font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;
+  animation:quickPulse 2.2s ease-in-out 1s 3;transition:background .2s,color .2s,transform .2s}
+.dsim:hover,.dsim:focus-visible{background:var(--lime);color:#121A02;transform:translateY(-1px)}
+.dsim__msg{flex-basis:100%;text-align:right;font-size:.74rem;font-weight:700;color:var(--lime);opacity:0;min-height:1em}
+.dsim__msg.on{animation:simMsg 3.2s ease both}
+@keyframes simMsg{0%{opacity:0;transform:translateY(4px)}12%,75%{opacity:1;transform:none}100%{opacity:0}}
+.dtip{position:absolute;z-index:6;pointer-events:none;padding:7px 12px;border-radius:10px;font-size:.78rem;font-weight:800;white-space:nowrap;
+  background:#fff;color:#070A18;box-shadow:0 14px 30px -12px #000;opacity:0;transform:translate(-50%,-100%) translateY(4px);transition:opacity .15s,transform .15s}
+.dtip.on{opacity:1;transform:translate(-50%,-100%)}
+.dtip::after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;background:#fff;transform:translateX(-50%) rotate(45deg);border-radius:2px}
+.dash .hit{fill:transparent;cursor:pointer}
+.dash .b,.dash .hbars li,.dash .legend li{cursor:pointer}
+.dash .b:hover .bar{filter:brightness(1.25)}
+@media(max-width:860px){.dash__act{justify-content:flex-start}.dsim__msg{text-align:left}}
+@media (prefers-reduced-motion:reduce){.actpane,.dsim,.dsim__msg.on{animation:none}.dsim__msg.on{opacity:1}}
